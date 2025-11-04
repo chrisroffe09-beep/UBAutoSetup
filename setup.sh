@@ -28,10 +28,16 @@ check_install() {
 echo
 echo "Select setup mode:"
 echo "  [1] Full Setup  - Installs all essential dev tools"
-echo "  [2] LNFinal Setup - Installs pip, psutil, and rich only"
+echo "  [2] LNFinal Setup - Installs pip, psutil, rich, and keyboard only"
 echo
 read -p "Enter your choice (1 or 2): " CHOICE
 echo
+
+# Function to install Python packages
+install_python_packages() {
+  pip3 install --upgrade pip || { echo "[ERROR] Failed to upgrade pip."; exit 12; }
+  pip3 install psutil rich keyboard || { echo "[ERROR] Failed to install psutil, rich, or keyboard."; exit 13; }
+}
 
 # Run based on selection
 case "$CHOICE" in
@@ -55,12 +61,16 @@ case "$CHOICE" in
     apt autoremove -y
     apt clean
 
+    # Install Python packages including keyboard
+    install_python_packages
+
     # Verify installs
     check_install "Python 3" python3
     check_install "pip3" pip3
     check_install "Git" git
     check_install "Curl" curl
     check_install "Vim" vim
+    python3 -c "import psutil, rich, keyboard" 2>/dev/null || { echo "[ERROR] psutil, rich, or keyboard failed to import."; exit 14; }
 
     echo "---- [Full Setup] Completed successfully ----"
     ;;
@@ -72,12 +82,12 @@ case "$CHOICE" in
       apt install -y python3-pip || { echo "[ERROR] Failed to install python3-pip."; exit 11; }
     fi
 
-    pip3 install --upgrade pip || { echo "[ERROR] Failed to upgrade pip."; exit 12; }
-    pip3 install psutil rich || { echo "[ERROR] Failed to install psutil or rich."; exit 13; }
+    # Install Python packages including keyboard
+    install_python_packages
 
     check_install "Python 3" python3
     check_install "pip3" pip3
-    python3 -c "import psutil, rich" 2>/dev/null || { echo "[ERROR] psutil or rich failed to import."; exit 14; }
+    python3 -c "import psutil, rich, keyboard" 2>/dev/null || { echo "[ERROR] psutil, rich, or keyboard failed to import."; exit 14; }
 
     echo "---- [LNFinal Setup] Completed successfully ----"
     ;;
