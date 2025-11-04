@@ -23,13 +23,12 @@ Clone the repository and run the script:
 git clone https://github.com/yourusername/UBAutoSetup.git
 cd UBAutoSetup
 sudo bash setup.sh
-When prompted, choose your setup type:
-
-sql
-Copy code
-Select setup mode:
+```
+When prompted, Select setup mode:
+```
   [1] Full Setup  - Installs all essential dev tools
   [2] LNFinal Setup - Installs pip, psutil, and rich only
+```
 🧩 Setup Modes
 🔹 Full Setup (Option 1)
 Performs a full environment setup:
@@ -82,5 +81,5 @@ Easily customizable — edit the package list in setup.sh to fit your workflow
 Can be used for VM bootstrapping, WSL setup, or lab environments
 
 🧑‍💻 Author
-Created by SourMitten170
+Created by yourusername
 Made with ☕ to make Ubuntu setup fast, clean, and painless.
