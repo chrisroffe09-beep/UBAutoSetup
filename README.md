@@ -62,16 +62,18 @@ rich
 
 Verifies both packages import successfully
 
-🧠 Exit Codes
-Code	Description
-1	Script not run as root
-2	Invalid menu selection
-10	General installation failure
-11	Failed to install python3-pip
-12	Failed to upgrade pip
-13	Failed to install psutil or rich
-14	Python packages failed import test
-20	One or more core packages failed to install
+🧠 Error Codes
+| Code | Description |
+|------|--------------|
+| `1`  | Script not run as root |
+| `2`  | Invalid menu selection |
+| `10` | General installation failure |
+| `11` | Failed to install `python3-pip` |
+| `12` | Failed to upgrade `pip` |
+| `13` | Failed to install `psutil` or `rich` |
+| `14` | Python packages failed import test |
+| `20` | One or more core packages failed to install |
+
 
 💡 Notes
 Designed for Ubuntu 22.04+ (Python 3 comes preinstalled)
