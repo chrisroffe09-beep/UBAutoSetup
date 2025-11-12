@@ -29,7 +29,7 @@ install_full_packages() {
   apt update -y && apt upgrade -y
   apt install -y \
     python3 python3-pip git curl wget vim htop net-tools unzip build-essential software-properties-common
-  apt autoremove -y
+  # Removed autoremove to avoid uninstalling required dependencies
   apt clean
 }
 
