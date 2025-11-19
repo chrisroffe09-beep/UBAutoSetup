@@ -35,7 +35,7 @@ install_full_packages() {
 
 # Install Python packages for LNFinal
 install_lnfinal_packages() {
-  echo "---- Installing LNFinal Python packages ----"
+  echo "---- Installing LNFinal (SSM) Python packages ----"
   pip3 install --upgrade pip
   pip3 install psutil rich keyboard speedtest-cli
 }
@@ -49,7 +49,7 @@ install_ext_only_packages() {
 # Menu prompt
 echo
 echo "Select setup mode:"
-echo "  [1] LNFinal Setup  - Minimal Python libs + speedtest-cli"
+echo "  [1] LNFinal (SSM) Setup  - Minimal Python libs + speedtest-cli"
 echo "  [2] Full Setup     - Essential dev tools only"
 echo "  [3] Ext. Setup     - Full Setup + LNFinal + extra little greebly libraries = Extended Setup!"
 echo
@@ -58,7 +58,7 @@ echo
 
 case "$CHOICE" in
   1)
-    echo "---- [LNFinal Setup] ----"
+    echo "---- [LNFinal (SSM) Setup] ----"
     apt update -y
     apt install -y python3-pip || { echo "[ERROR] Failed to install python3-pip."; exit 11; }
     install_lnfinal_packages
@@ -67,7 +67,7 @@ case "$CHOICE" in
     check_install "pip3" pip3
     python3 -c "import psutil, rich, keyboard, speedtest" 2>/dev/null || { echo "[ERROR] Python packages failed to import."; exit 14; }
 
-    echo "---- [LNFinal Setup] Completed ----"
+    echo "---- [LNFinal (SSM) Setup] Completed ----"
     ;;
 
   2)
